@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class People implements Iterator {
+public class People<E extends Person> implements Iterator {
 
-    List<Person> list;
+    List<E> list;
 
     public People(){
-        this.list = new ArrayList<Person>();
+        this.list = new ArrayList<E>();
     }
 
-    public void add(Person person){
-        this.list.add(person);
+    public void add(E e){
+        this.list.add(e);
     }
 
-    public Person findById(long id){
+    public E findById(long id){
         for(int i = 0; i < this.list.size(); i++){
             if(this.list.get(i).getId() == id){
                 return this.list.get(i);
@@ -62,7 +62,7 @@ public class People implements Iterator {
     }
 
     public void removeAll(){
-        this.list = new ArrayList<Person>();
+        this.list = new ArrayList<E>();
     }
 
     public int count(){
