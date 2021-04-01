@@ -1,10 +1,10 @@
 package io.zipcoder.interfaces;
 
-public final class Students extends People<Student>{
+public class Students extends People<Student>{
 
-    static final Students INSTANCE = new Students();
+    private People<Student> INSTANCE = new People<Student>();
 
-    private Students(){
+    Students(){
         Student ryan = new Student(42, "Ryan");
         Student justin = new Student(52, "Justin");
         Student theresa = new Student(62, "Theresa");
@@ -16,8 +16,12 @@ public final class Students extends People<Student>{
         INSTANCE.add(hazel);
     }
 
-    public static Students getInstance(){
+    public People<Student> getInstance(){
         return INSTANCE;
+    }
+
+    public String getNameById(long id){
+        return INSTANCE.findById(id).getName();
     }
 
 }
